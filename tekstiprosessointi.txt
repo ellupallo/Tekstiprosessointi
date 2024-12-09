@@ -1,0 +1,169 @@
+https://huggingface.co/
+https://applied-language-technology.mooc.fi/html/index.html
+
+___________________________________________________________
+VADER -kielen hakeminen:
+from nltk.corpus import vader_lexicon
+print(vader_lexicon.abspath("vader_lexicon.txt"))
+with open(vader_lexicon.abspath("vader_lexicon.txt"), "r") as file:
+    for line in file:
+        print(line.strip())  # Prints words and their sentiment scores
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+sia = SentimentIntensityAnalyzer()
+vader_lexicon = sia.lexicon  # Access the internal lexicon dictionary
+
+# Example: Look up specific words
+print("happy:", vader_lexicon["happy"])  # Positive score
+print("sad:", vader_lexicon["sad"])  # Negative score
+
+# Print the first 10 entries in the lexicon
+for word, score in list(vader_lexicon.items())[:10]:
+    print(f"{word}: {score}")
+
+______________________________________________________
+
+JJ: Adjective (e.g., "big," "happy," "quick")
+*************************************************
+Used to describe or modify nouns.
+Example: The quick fox jumps.
+NNP: Proper noun, singular (e.g., "John," "Microsoft," "Justice")
+
+Refers to specific names or titles.
+Example: The book was written by Justice Holmes.
+*************************************************
+CC: Coordinating Conjunction
+Example: "and," "or," "but"
+Used to connect words, phrases, or clauses of equal rank.
+Example in your case: and connects parts of the sentence.
+************************************************
+NNS: Plural Noun
+Example: "dogs," "people," "cars"
+Refers to multiple instances of a noun.
+Example in your case: people is a plural noun.
+************************************************
+IN: Preposition or Subordinating Conjunction
+Example: "of," "in," "by," "because"
+Links nouns or pronouns to other parts of the sentence or introduces a subordinate clause.
+Example in your case: of is a preposition connecting "people" and "world."
+**********************************************
+DT: Determiner
+Example: "the," "a," "an," "some"
+Used to specify a noun.
+Example in your case: the specifies "world."
+**********************************************
+NN: Singular Noun
+Example: "dog," "world," "book"
+Refers to a single instance of a noun.
+Example in your case: world is a singular noun.
+**********************************************
+NNP: Proper Noun, Singular
+Example: "London," "Google," "Thank"
+Names a specific entity or title.
+Example in your case: Thank is tagged as NNP, likely because the system interprets it as part of a title or name.
+**********************************************
+PRP: Personal Pronoun
+Example: "I," "you," "we," "he," "she"
+Refers to people or things.
+Examples in your case: you and We are personal pronouns.
+*********************************************
+
+
+
+1. Named Entity Recognition (NER)
+Tags involved: NNP (Proper Noun)
+Use case:
+Identifying names of people, organizations, locations, etc., in text.
+Example: In "Barack Obama visited Paris," NNP helps detect Barack Obama and Paris as entities.
+Application:
+Information extraction for search engines or knowledge graphs.
+Chatbots for recognizing user-specific entities.
+2. Coreference Resolution
+Tags involved: PRP (Personal Pronoun)
+Use case:
+Resolving references like pronouns to the correct entity.
+Example: In "John said he is tired," PRP helps determine that "he" refers to "John."
+Application:
+Document summarization.
+Conversational AI to maintain context.
+3. Sentiment Analysis
+Tags involved: Various, including JJ (Adjective) and NN (Noun)
+Use case:
+Identifying sentiment-bearing words, like adjectives and nouns, to infer emotion.
+Example: In "This is an amazing product," JJ helps capture amazing as positive.
+Application:
+Social media analysis for brands.
+Product review classification.
+4. Machine Translation
+Tags involved: All tags (e.g., IN for prepositions, DT for determiners)
+Use case:
+Ensuring correct syntactic structure when translating between languages.
+Example: In "He went to the market," IN ensures correct mapping of "to" in other languages.
+Application:
+Building accurate translation systems like Google Translate.
+5. Grammar Checking
+Tags involved: All tags (e.g., DT, NN, VB for verbs)
+Use case:
+Identifying grammatical errors based on POS tag patterns.
+Example: Detecting missing articles in "He bought car" (missing DT, "a").
+Application:
+Grammar correction tools like Grammarly.
+6. Information Retrieval
+Tags involved: NN, NNS, JJ, etc.
+Use case:
+Extracting key terms or concepts based on nouns and adjectives.
+Example: In "Artificial intelligence revolutionizes healthcare," NN identifies key terms like intelligence and healthcare.
+Application:
+Search engines.
+Topic modeling in documents.
+7. Question Answering
+Tags involved: PRP, WP (Wh-Pronouns like "who"), NNP
+Use case:
+Identifying and relating entities, pronouns, and question words to retrieve relevant answers.
+Example: For "Who is the President of the United States?" NNP identifies "President" and "United States."
+Application:
+Virtual assistants like Alexa or Siri.
+8. Text-to-Speech (TTS)
+Tags involved: NNP, DT, etc.
+Use case:
+Pronouncing proper nouns correctly or stressing articles for emphasis.
+Example: Differentiating read (past tense) from read (present tense).
+Application:
+TTS systems for assistive technologies.
+9. Syntax Parsing for NLP Tasks
+Tags involved: All tags (especially NN, VB, JJ, RB)
+Use case:
+Generating syntax trees to understand sentence structures.
+Example: Identifying subject, verb, and object in "The cat sat on the mat."
+Application:
+Sentence simplification for summarization.
+Language generation in chatbots.
+10. Chatbots and Conversational AI
+Tags involved: PRP, NNP, VB
+Use case:
+Managing dialogue by identifying pronouns (PRP) and specific entities (NNP).
+Example: In "I need help with Google," NNP recognizes Google for intent analysis.
+Application:
+Creating personalized and context-aware responses.
+POS tagging serves as the foundation for many downstream NLP tasks, enabling systems to analyze and process text more intelligently.
+
+
+
+
+Sekalaisia....
+https://pandas.pydata.org/
+
+df6=sample - antaa satunnaisen
+tsekkaa, miten duplicated toimii - en ymmärtänyt  --> ok
+print(df6["sp"].duplicated().to_string())
+
+jos useampi ehto tietojen hakuun, niin &-merkki peliin ja kuten yhtälössä, osat sulkuihin
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+tiedoston hakeminen:
+kunnat = pd.read_csv("kuntien_avainluvut.csv", encoding="ansi", sep=";")
+kunnat
