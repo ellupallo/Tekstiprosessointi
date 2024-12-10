@@ -2,6 +2,24 @@ https://huggingface.co/
 https://applied-language-technology.mooc.fi/html/index.html
 
 ___________________________________________________________
+In VADER sentiment analysis, the compound score represents the overall sentiment polarity of the text. It is a normalized metric ranging from -1 (most negative) to +1 (most positive). Here's a breakdown of what the compound score indicates:
+
+Positive Sentiment: A compound score closer to +1 indicates a highly positive sentiment.
+Neutral Sentiment: A compound score near 0 suggests neutral sentiment.
+Negative Sentiment: A compound score closer to -1 suggests a highly negative sentiment.
+Interpretation of compound = 0.9989
+A compound score of 0.9989 is very close to +1, suggesting that the speech has a strongly positive overall sentiment. While the other scores (neg, neu, pos) represent proportions of negative, neutral, and positive words respectively, the compound score provides a holistic measure.
+
+How the Compound Score is Calculated
+The compound score is computed by summing the valence scores of each word in the text, adjusting them based on punctuation, capitalization, and intensifiers (like "very" or "extremely"), and then normalizing the result to the range [-1, 1].
+
+Contextual Note for Kennedy's Speech
+Given that the positive sentiment (pos: 0.188) outweighs the negative sentiment (neg: 0.128) and a large part of the speech is neutral (neu: 0.684), the high compound score likely reflects the positive tone and uplifting nature of the speech overall.
+
+Would you like further guidance on interpreting or visualizing these scores across multiple speeches?
+
+
+
 VADER -kielen hakeminen:
 from nltk.corpus import vader_lexicon
 print(vader_lexicon.abspath("vader_lexicon.txt"))
